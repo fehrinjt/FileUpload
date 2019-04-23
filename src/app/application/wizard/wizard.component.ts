@@ -38,9 +38,9 @@ export class WizardComponent implements OnInit {
   // Everything Below here is an example of my 'work around', where I just keep track of
   // the files that are added/removed, and then submit these files instead of the value of the form control
   // None of these events are actually connected to my file upload right now, but this is their logic.
-  avatarFiles: FileInfo[];
+  // avatarFiles: FileInfo[];
 
-  patchFiles() {
+  /*patchFiles() {
     if (this.avatarFiles) {
       const temp = [];
       // Not sure why this is necessary...but patching using just the normal avatarFiles object doesn't seem to work
@@ -52,22 +52,28 @@ export class WizardComponent implements OnInit {
         avatar: temp
       });
     }
-  }
+  }*/
 
   // Add newly selected files to the local array
   selectEventHandler(e: SelectEvent) {
-    if (!this.avatarFiles) {
+    /*if (!this.avatarFiles) {
       this.avatarFiles = [];
-    }
-    e.files.forEach(f => {
+    }*/
+
+
+    this.formService.pageOne.patchValue({
+      avatar: e.files
+    });
+
+    /*e.files.forEach(f => {
       if (!f.validationErrors) {
         this.avatarFiles.push(f);
       }
-    });
+    });*/
   }
 
   // Remove files from the local array
-  removeFileUpload(e: RemoveEvent) {
+ /*removeFileUpload(e: RemoveEvent) {
     e.files.forEach(f => {
       this.avatarFiles = this.avatarFiles.filter(b => b.uid !== f.uid);
     });
@@ -76,5 +82,5 @@ export class WizardComponent implements OnInit {
   // Clear all files from local array
   clearFileUpload(e: ClearEvent) {
     this.avatarFiles = [];
-  }
+  }*/
 }

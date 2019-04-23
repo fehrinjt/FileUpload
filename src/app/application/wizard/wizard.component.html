@@ -18,7 +18,7 @@
       <label for="avatar">Avatar</label>
       <kendo-upload formControlName="avatar"
               [autoUpload]="false"
-              formControlName="avatar">
+              (select)="selectEventHandler($event)">
             </kendo-upload>
     </div>
     <button type="button" class="btn btn-primary" (click)="moveStep(1)">Next</button>
